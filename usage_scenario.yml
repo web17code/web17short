@@ -1,0 +1,27 @@
+---
+name: processmining conformance
+author: Raines
+version: 1.0
+description: processmining conformance algorithms
+
+services:
+  token_based_container:
+    build:
+      context: .
+  alignments_container:
+    build:
+      context: .
+
+flow:
+  - name: Token based replay
+    container: token_based_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py token
+        note: token based replay algorithms
+  - name: Alignments
+    container: alignments_container
+    commands:
+      - type: console
+        command: python /app/test_conformance.py alignments
+        note: alignments algorithms
